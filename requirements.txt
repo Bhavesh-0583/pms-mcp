@@ -1,3 +1,5 @@
 mcp==1.30.0
 requests
 python-dotenv
+fastapi
+uvicorn
