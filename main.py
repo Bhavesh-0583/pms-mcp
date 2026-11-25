@@ -18,3 +18,10 @@ def projects():
 @app.get("/project_tasks/{project_id}")
 def project_tasks(project_id: int):
     return get_project_tasks(project_id)
+
+@app.get("/mcp")
+def mcp_check():
+    return {
+        "name": "PMS MCP",
+        "status": "running"
+    }
