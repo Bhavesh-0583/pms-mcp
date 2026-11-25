@@ -4,7 +4,6 @@ from mcp_server import mcp
 
 app = FastAPI()
 
-# Existing APIs
 @app.get("/")
 def home():
     return {"message": "PMS MCP Server Running"}
@@ -21,9 +20,19 @@ def projects():
 def project_tasks(project_id: int):
     return get_project_tasks(project_id)
 
-# MCP Mount
-app.mount("/mcp", mcp.streamable_http_app())
+# Create MCP app
+mcp_app = mcp.streamable_http_app()
+
+print("MCP APP =", mcp_app)
+
+# Mount MCP
+app.mount("/mcp", mcp_app)
+
+# Print all routes
+print("==== ROUTES ====")
 
 for route in app.routes:
-    print(route.path)
-
+    try:
+        print(route.path)
+    except Exception as e:
+        print(e)
