@@ -29,3 +29,15 @@ def get_projects():
     )
 
     return response.json()
+
+
+def get_project_tasks(project_id):
+
+    url = f"{BASE_URL}/api/v3/projects/{project_id}/work_packages"
+
+    response = requests.get(
+        url,
+        auth=("apikey", API_KEY)
+    )
+
+    return response.json()
