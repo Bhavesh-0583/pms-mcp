@@ -25,19 +25,18 @@ mcp_app = mcp.streamable_http_app()
 
 print("MCP APP =", mcp_app)
 
-# Mount MCP
-app.mount("/mcp", mcp_app)
-
-print("==== MCP ROUTES ====")
+print("==== MCP INTERNAL ROUTES ====")
 
 for route in mcp_app.routes:
     try:
         print(route.path)
-    except Exception:
-        print(route)
+    except Exception as e:
+        print(e)
 
-# Print all routes
-print("==== ROUTES ====")
+# Mount MCP
+app.mount("/mcp", mcp_app)
+
+print("==== MAIN ROUTES ====")
 
 for route in app.routes:
     try:
