@@ -19,3 +19,13 @@ def get_tasks():
     )
 
     return response.json()
+
+def get_projects():
+    url = f"{BASE_URL}/api/v3/projects?pageSize=10"
+
+    response = requests.get(
+        url,
+        auth=("apikey", API_KEY)
+    )
+
+    return response.json()
