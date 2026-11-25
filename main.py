@@ -28,6 +28,14 @@ print("MCP APP =", mcp_app)
 # Mount MCP
 app.mount("/mcp", mcp_app)
 
+print("==== MCP ROUTES ====")
+
+for route in mcp_app.routes:
+    try:
+        print(route.path)
+    except Exception:
+        print(route)
+
 # Print all routes
 print("==== ROUTES ====")
 
