@@ -23,3 +23,7 @@ def project_tasks(project_id: int):
 
 # MCP Mount
 app.mount("/mcp", mcp.streamable_http_app())
+
+for route in app.routes:
+    print(route.path)
+
