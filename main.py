@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pms import get_tasks, get_projects
+from pms import get_tasks, get_projects, get_project_tasks
 
 app = FastAPI()
 
@@ -14,3 +14,7 @@ def time_entries():
 @app.get("/projects")
 def projects():
     return get_projects()
+
+@app.get("/project_tasks/{project_id}")
+def project_tasks(project_id: int):
+    return get_project_tasks(project_id)
