@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from pms import get_tasks, get_projects, get_project_tasks
+from mcp_server import mcp
 
 app = FastAPI()
 
+# Existing APIs
 @app.get("/")
 def home():
     return {"message": "PMS MCP Server Running"}
@@ -19,9 +21,5 @@ def projects():
 def project_tasks(project_id: int):
     return get_project_tasks(project_id)
 
-@app.get("/mcp")
-def mcp_check():
-    return {
-        "name": "PMS MCP",
-        "status": "running"
-    }
+# MCP Mount
+app.mount("/mcp", mcp.streamable_http_app())
