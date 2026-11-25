@@ -32,6 +32,9 @@ for route in mcp_app.routes:
         print(route.path)
     except Exception as e:
         print(e)
+        
+print("MCP mounted at /mcp")
+print(app.routes)
 
 # Mount MCP
 app.mount("/mcp", mcp_app)
