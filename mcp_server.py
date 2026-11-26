@@ -55,3 +55,10 @@ def get_users_list():
     Get PMS users
     """
     return get_users()
+
+@mcp.tool()
+def project_count():
+    projects = get_projects()
+    return {
+        "total_projects": len(projects)
+    }
