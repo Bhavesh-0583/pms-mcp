@@ -9,6 +9,7 @@ API_KEY = os.getenv("PMS_API_KEY")
 
 AUTH = ("apikey", API_KEY)
 
+
 def get_all_pages(endpoint):
     all_items = []
     offset = 1
@@ -41,10 +42,8 @@ def get_all_pages(endpoint):
 def get_tasks():
     return get_all_pages("/api/v3/time_entries")
 
+
 def get_projects():
-    """
-    Get projects
-    """
     url = f"{BASE_URL}/api/v3/projects?pageSize=100"
 
     response = requests.get(
@@ -56,9 +55,6 @@ def get_projects():
 
 
 def get_project_tasks(project_id):
-    """
-    Get work packages/tasks for a project
-    """
     url = f"{BASE_URL}/api/v3/projects/{project_id}/work_packages?pageSize=100"
 
     response = requests.get(
@@ -72,13 +68,12 @@ def get_project_tasks(project_id):
 def get_work_packages():
     return get_all_pages("/api/v3/work_packages")
 
+
 def get_milestones():
     return get_all_pages("/api/v3/work_packages")
 
+
 def get_users():
-    """
-    Get users
-    """
     url = f"{BASE_URL}/api/v3/users?pageSize=100"
 
     response = requests.get(
