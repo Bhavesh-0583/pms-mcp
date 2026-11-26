@@ -44,15 +44,7 @@ def get_tasks():
 
 
 def get_projects():
-    url = f"{BASE_URL}/api/v3/projects?pageSize=100"
-
-    response = requests.get(
-        url,
-        auth=AUTH
-    )
-
-    return response.json()
-
+    return get_all_pages("/api/v3/projects")
 
 def get_project_tasks(project_id):
     url = f"{BASE_URL}/api/v3/projects/{project_id}/work_packages?pageSize=100"
