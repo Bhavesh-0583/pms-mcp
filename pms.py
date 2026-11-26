@@ -7,37 +7,88 @@ load_dotenv()
 BASE_URL = os.getenv("PMS_URL")
 API_KEY = os.getenv("PMS_API_KEY")
 
-print("BASE_URL =", BASE_URL)
-print("API_KEY =", API_KEY)
+AUTH = ("apikey", API_KEY)
+
 
 def get_tasks():
-    url = f"{BASE_URL}/api/v3/time_entries?pageSize=2"
+    """
+    Get latest time entries
+    """
+    url = f"{BASE_URL}/api/v3/time_entries?pageSize=100"
 
     response = requests.get(
         url,
-        auth=("apikey", API_KEY)
+        auth=AUTH
     )
 
     return response.json()
 
+
 def get_projects():
-    url = f"{BASE_URL}/api/v3/projects?pageSize=10"
+    """
+    Get projects
+    """
+    url = f"{BASE_URL}/api/v3/projects?pageSize=100"
 
     response = requests.get(
         url,
-        auth=("apikey", API_KEY)
+        auth=AUTH
     )
 
     return response.json()
 
 
 def get_project_tasks(project_id):
-
-    url = f"{BASE_URL}/api/v3/projects/{project_id}/work_packages"
+    """
+    Get work packages/tasks for a project
+    """
+    url = f"{BASE_URL}/api/v3/projects/{project_id}/work_packages?pageSize=100"
 
     response = requests.get(
         url,
-        auth=("apikey", API_KEY)
+        auth=AUTH
+    )
+
+    return response.json()
+
+
+def get_work_packages():
+    """
+    Get all work packages
+    """
+    url = f"{BASE_URL}/api/v3/work_packages?pageSize=100"
+
+    response = requests.get(
+        url,
+        auth=AUTH
+    )
+
+    return response.json()
+
+
+def get_milestones():
+    """
+    Get milestone work packages
+    """
+    url = f"{BASE_URL}/api/v3/work_packages?pageSize=100"
+
+    response = requests.get(
+        url,
+        auth=AUTH
+    )
+
+    return response.json()
+
+
+def get_users():
+    """
+    Get users
+    """
+    url = f"{BASE_URL}/api/v3/users?pageSize=100"
+
+    response = requests.get(
+        url,
+        auth=AUTH
     )
 
     return response.json()
