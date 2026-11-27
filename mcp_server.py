@@ -9,6 +9,7 @@ from pms import (
     get_users,
     get_projects_count,
     get_work_packages_count,
+    get_active_projects_count,
     get_users_count
 )
 
@@ -83,3 +84,10 @@ def users_count():
     return {
         "total_users": get_users_count()
     }
+
+@mcp.tool()
+def active_projects_count():
+    """
+    Get total active projects
+    """
+    return get_active_projects_count()
