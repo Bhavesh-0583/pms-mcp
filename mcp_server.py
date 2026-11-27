@@ -6,7 +6,10 @@ from pms import (
     get_project_tasks,
     get_work_packages,
     get_milestones,
-    get_users
+    get_users,
+    get_projects_count,
+    get_work_packages_count,
+    get_users_count
 )
 
 mcp = FastMCP(
@@ -61,4 +64,22 @@ def project_count():
     projects = get_projects()
     return {
         "total_projects": len(projects)
+    }
+
+@mcp.tool()
+def projects_count():
+    return {
+        "total_projects": get_projects_count()
+    }
+
+@mcp.tool()
+def work_packages_count():
+    return {
+        "total_work_packages": get_work_packages_count()
+    }
+
+@mcp.tool()
+def users_count():
+    return {
+        "total_users": get_users_count()
     }
