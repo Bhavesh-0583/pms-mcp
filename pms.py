@@ -65,6 +65,18 @@ def get_milestones():
     return get_all_pages("/api/v3/work_packages")
 
 
+def get_projects_count():
+    projects = get_all_pages("/api/v3/projects")
+    return len(projects)
+
+def get_work_packages_count():
+    work_packages = get_all_pages("/api/v3/work_packages")
+    return len(work_packages)
+
+def get_users_count():
+    users = get_all_pages("/api/v3/users")
+    return len(users)
+
 def get_users():
     url = f"{BASE_URL}/api/v3/users?pageSize=100"
 
