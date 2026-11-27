@@ -86,3 +86,29 @@ def get_users():
     )
 
     return response.json()
+
+import json
+
+
+def get_active_projects_count():
+    filters = json.dumps([
+        {
+            "active": {
+                "operator": "=",
+                "values": ["t"]
+            }
+        }
+    ])
+
+    url = f"{BASE_URL}/api/v3/projects?pageSize=1&filters={filters}"
+
+    response = requests.get(
+        url,
+        auth=AUTH
+    )
+
+    data = response.json()
+
+    return {
+        "active_projects": data.get("total", 0)
+    }
